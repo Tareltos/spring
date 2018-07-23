@@ -1,8 +1,13 @@
 package by.tarelko.projectmaneger.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -10,20 +15,9 @@ public class Board {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user", nullable = false)
     private User user;
-
-    public Board() {
-    }
-
-    public Board(String name) {
-        this.name = name;
-    }
-
-    public Board(int id) {
-        this.id = id;
-    }
 
     public Board(String name, User user) {
         this.name = name;
@@ -46,20 +40,11 @@ public class Board {
         this.name = name;
     }
 
-    public User getUserId() {
+    public User getUser() {
         return user;
     }
 
-    public void setUserId(User userId) {
-        this.user = userId;
-    }
-
-    @Override
-    public String toString() {
-        return "Board{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", userId=" + user +
-                '}';
+    public void setUser(User user) {
+        this.user = user;
     }
 }

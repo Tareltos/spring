@@ -1,13 +1,9 @@
 package by.tarelko.projectmaneger.web;
 
-import by.tarelko.projectmaneger.entity.*;
-import by.tarelko.projectmaneger.repository.BoardRepository;
-import by.tarelko.projectmaneger.repository.TaskListRepository;
-import by.tarelko.projectmaneger.repository.TaskRepository;
+import by.tarelko.projectmaneger.entity.User;
 import by.tarelko.projectmaneger.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 

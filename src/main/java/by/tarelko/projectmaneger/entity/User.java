@@ -1,10 +1,14 @@
 package by.tarelko.projectmaneger.entity;
 
 
+import lombok.*;
+
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,16 +18,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    public User() {
-
-    }
-
-    public User(String login) {
-        this.login = login;
-    }
-
-    public User(int id, String login, String password) {
-        this.id = id;
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }

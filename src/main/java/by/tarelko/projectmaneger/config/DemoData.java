@@ -31,9 +31,9 @@ public class DemoData implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        User user = new User(1, "tareltos", "privet");
-        User user2 = new User(2, "tareltos2", "privet");
-        User user3 = new User(3, "tareltos3", "privet");
+        User user = new User("tareltos", "privet");
+        User user2 = new User("tareltos2", "privet");
+        User user3 = new User("tareltos3", "privet");
 
         repository.save(user);
         repository.save(user2);
@@ -41,12 +41,14 @@ public class DemoData implements ApplicationRunner {
 
         Board b1 = new Board("Project1", user);
         Board b2 = new Board("Project2", user);
+        Board b3 = new Board("Project3", user2);
         boardRepository.save(b1);
         boardRepository.save(b2);
-        TaskList todo = new TaskList(ListType.TODO, b1);
-        TaskList doing = new TaskList(ListType.DOING, b1);
-        TaskList testing = new TaskList(ListType.TESTING, b1);
-        TaskList done = new TaskList(ListType.DONE, b1);
+        boardRepository.save(b3);
+        TaskList todo = new TaskList("TODO", b1);
+        TaskList doing = new TaskList("DOING", b1);
+        TaskList testing = new TaskList("TESTING", b1);
+        TaskList done = new TaskList("DONE", b1);
         taskListRepository.save(todo);
         taskListRepository.save(doing);
         taskListRepository.save(testing);
@@ -55,17 +57,17 @@ public class DemoData implements ApplicationRunner {
 
         Task task = new Task("task1", todo);
         Task task1 = new Task("task2", todo);
-        Task task2= new Task("task3", todo);
+        Task task2 = new Task("task3", todo);
         Task task1p1 = new Task("task4", doing);
-        Task task2p1= new Task("task5", testing);
-        Task tas= new Task("task6", done);
+        Task task2p1 = new Task("task5", testing);
+        Task tas = new Task("task6", done);
 
         taskRepository.save(task);
         taskRepository.save(task1);
         taskRepository.save(task2);
-        taskRepository.save(task2p1);taskRepository.save(tas);
+        taskRepository.save(task2p1);
+        taskRepository.save(tas);
         taskRepository.save(task1p1);
-
 
 
     }

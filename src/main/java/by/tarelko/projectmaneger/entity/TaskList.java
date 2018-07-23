@@ -1,34 +1,27 @@
 package by.tarelko.projectmaneger.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class TaskList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(nullable = false, unique = true)
-    private ListType name;
+    private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "boardId", nullable = false)
     private Board board;
 
-    public TaskList() {
-    }
-
-    public TaskList(ListType name) {
+    public TaskList(String name, Board board) {
         this.name = name;
-    }
-
-    public TaskList(ListType name, Board board) {
-        this.name = name;
-        this.board = board;
-    }
-
-    public TaskList(Board board) {
         this.board = board;
     }
 
@@ -40,11 +33,11 @@ public class TaskList {
         this.id = id;
     }
 
-    public ListType getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(ListType name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -54,30 +47,5 @@ public class TaskList {
 
     public void setBoard(Board board) {
         this.board = board;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TaskList list = (TaskList) o;
-        return id == list.id &&
-                name == list.name &&
-                Objects.equals(board, list.board);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, name, board);
-    }
-
-    @Override
-    public String toString() {
-        return "TaskList{" +
-                "id=" + id +
-                ", name=" + name +
-                ", board=" + board +
-                '}';
     }
 }

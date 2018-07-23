@@ -2,7 +2,6 @@ package by.tarelko.projectmaneger.service;
 
 
 import by.tarelko.projectmaneger.entity.Board;
-import by.tarelko.projectmaneger.entity.User;
 import by.tarelko.projectmaneger.repository.BoardRepository;
 import by.tarelko.projectmaneger.service.exception.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

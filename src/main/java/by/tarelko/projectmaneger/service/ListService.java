@@ -18,4 +18,17 @@ public class ListService {
 
         return repository.findByBoard_NameAndBoard_User_Id(project, id).orElseThrow(DataNotFoundException::new);
     }
+
+    public TaskList updateTaskList(TaskList list, String name) {
+        list.setName(name);
+        return repository.save(list);
+    }
+
+    public TaskList addTaskList(TaskList list) {
+        return repository.save(list);
+    }
+
+    public void deleteList(int list) {
+        repository.deleteById(list);
+    }
 }

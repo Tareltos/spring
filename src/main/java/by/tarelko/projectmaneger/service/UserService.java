@@ -3,7 +3,6 @@ package by.tarelko.projectmaneger.service;
 
 import by.tarelko.projectmaneger.entity.User;
 import by.tarelko.projectmaneger.repository.UserRepository;
-import by.tarelko.projectmaneger.service.exception.CreateEntityException;
 import by.tarelko.projectmaneger.service.exception.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

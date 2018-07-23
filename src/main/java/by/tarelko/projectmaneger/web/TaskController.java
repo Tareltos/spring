@@ -1,7 +1,6 @@
 package by.tarelko.projectmaneger.web;
 
 
-import by.tarelko.projectmaneger.entity.ListType;
 import by.tarelko.projectmaneger.entity.Task;
 import by.tarelko.projectmaneger.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;

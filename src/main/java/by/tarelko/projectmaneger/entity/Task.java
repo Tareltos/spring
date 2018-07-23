@@ -1,9 +1,13 @@
 package by.tarelko.projectmaneger.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class Task {
 
     @Id
@@ -11,13 +15,9 @@ public class Task {
     private int id;
     @Column(nullable = false, unique = true)
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "task",nullable = false)
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "taskId", nullable = false)
     private TaskList taskList;
-
-
-    public Task() {
-    }
 
     public Task(String description, TaskList taskList) {
         this.description = description;
@@ -46,30 +46,5 @@ public class Task {
 
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return id == task.id &&
-                Objects.equals(description, task.description) &&
-                Objects.equals(taskList, task.taskList);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, description, taskList);
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", taskList=" + taskList +
-                '}';
     }
 }
