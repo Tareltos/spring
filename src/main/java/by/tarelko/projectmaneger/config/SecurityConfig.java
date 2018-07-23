@@ -1,5 +1,4 @@
-package by.tarelko.projectmaneger.security;
-
+package by.tarelko.projectmaneger.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
